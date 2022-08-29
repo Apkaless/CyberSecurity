@@ -14,7 +14,12 @@ def printBanner(sock,port):
         
         data = sock.recv(4096).decode()
 
-        print('\nBanner: %s\n' %(data))
+        if len(data) < 1:
+
+            pass
+        
+        else:
+            print('Banner: %s\n' %(data))
     
     except:
         

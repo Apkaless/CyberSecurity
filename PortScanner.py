@@ -38,8 +38,14 @@ def conn(ipv4, port):
 
     except Exception as e:
 
-        print('Port %s\%s is closed on %s\n' %(int(port), getservbyport(int(port)), ipv4))
-    
+        try:
+
+            print('Port %s\%s is closed on %s\n' %(int(port), getservbyport(int(port)), ipv4))
+
+        except:
+
+            print('Port %s is closed on %s\n' %(int(port), ipv4))
+            
     finally:
 
             s.close()

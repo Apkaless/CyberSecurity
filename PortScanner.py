@@ -31,14 +31,14 @@ def conn(ipv4, port):
 
         s.connect(addr)
 
-        print('Port %s is open on %s\n' %(int(port), ipv4))
+        print('Port %s\%s is open on %s\n' %(int(port), getservbyport(int(port)), ipv4))
 
 
         printBanner(s, int(port))
 
     except Exception as e:
 
-        print('Port %s is closed on %s\n' %(int(port), ipv4))
+        print('Port %s\%s is closed on %s\n' %(int(port), getservbyport(int(port)), ipv4))
     
     finally:
 

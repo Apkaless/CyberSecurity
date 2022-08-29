@@ -36,7 +36,7 @@ def conn(ipv4, port):
 
         printBanner(s, int(port))
 
-    except Exception as e:
+    except:
 
         try:
 
@@ -45,7 +45,7 @@ def conn(ipv4, port):
         except:
 
             print('Port %s is closed on %s\n' %(int(port), ipv4))
-            
+
     finally:
 
             s.close()

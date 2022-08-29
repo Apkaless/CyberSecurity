@@ -1,27 +1,27 @@
 from socket import *
 import argparse
 
-
-
 def printBanner(sock,port):
 
     try:
 
-        if port == 80:
-            sock.send('GET HTTP/1.1 \r\n')
+        if int(port) == 80:
+
+            sock.send('GET HTTP/1.1 \r\n'.encode())
 
         else:
-            sock.send('\r\n')
+            sock.send('\r\n'.encode())
         
         data = sock.recv(4096).decode()
 
         print('\nBanner: %s\n' %(data))
     
     except:
-
-        print('\n[-] Banner Not Available\n')
+        
+        print('[-] Banner Not Available\n')
 
 def conn(ipv4, port):
+
 
     s = socket(AF_INET, SOCK_STREAM)
 
@@ -42,7 +42,7 @@ def conn(ipv4, port):
     
     finally:
 
-        s.close()
+            s.close()
 
 def ipValidation(ipv4, portlist):
 
@@ -61,15 +61,17 @@ def ipValidation(ipv4, portlist):
         hostname = gethostbyaddr(ipv4)
 
 
-        print('Scan result for ' + hostname[0] + ' ...')
+        print('\nResult for ' + hostname[0] + ' ...\n' + '='*60 + '\n')
 
     except:
 
-        print('\nScan result for ' + ip + ' ...\n' + '='*30 + '\n')
-
+        print('\nResult for ' + ip + ' ...\n' + '='*30 + '\n')
+    
     for port in portlist:
 
-        conn(ipv4, port)
+        conn(ip, port)
+
+
 
 def main():
 
